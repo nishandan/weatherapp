@@ -1,0 +1,55 @@
+<!DOCTYPE HTML>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Spring Boot - Weather Application </title>
+
+    <link th:rel="stylesheet" th:href="@{assets/bootstrap-select-1.13.9/dist/css/bootstrap-select.css}"/>
+    <link th:rel="stylesheet" th:href="@{webjars/bootstrap/4.0.0-2/css/bootstrap.min.css} "/>
+
+</head>
+<body>
+
+<!-- Navigation -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark static-top">
+    <div class="container">
+        <a class="navbar-brand" href="/">Weather Application</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive"
+                aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+    </div>
+</nav>
+
+<div class="container">
+
+    <div class="row">
+        <div class="col-md-4 mt-5">
+            <form method="post" th:object="${weather}">
+
+                <div class="form-group">
+                    <label for="city">Select City</label>
+                    <select class="form-control selectpicker" th:field="*{city}" id="city">
+                        <option value="">Select City</option>
+                        <option th:each="city : ${T(com.nishan.dbs.model.City).values()}"
+                                th:value="${city}"
+                                th:text="${city}">city
+                        </option>
+
+                    </select>
+                </div>
+				
+                <button class="btn btn-primary" type="submit">Check Weather</button>
+            </form>
+        </div>
+    </div>
+
+</div>
+
+<script th:src="@{/webjars/jquery/jquery.min.js}"></script>
+<script th:src="@{/webjars/popper.js/umd/popper.min.js}"></script>
+<script th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
+<script th:src="@{assets/bootstrap-select-1.13.9/dist/js/bootstrap-select.js}"></script>
+
+</body>
+</html>
